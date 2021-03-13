@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: mubarak96-max/cms-tutorial
+  name: git-gateway
+  branch: master
 
 media_folder: static/img
 public_folder: /img
@@ -11,8 +11,8 @@ collections:
     folder: "content/blog"
     create: true
     slug: "index"
-    media_folder: ""
-    public_folder: ""
+    media_folder: "static/img"
+    public_folder: "img"
     path: "{{title}}/index"
     editor:
       preview: false

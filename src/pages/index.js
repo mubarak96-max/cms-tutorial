@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, {useEffect} from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
@@ -22,6 +22,18 @@ const BlogIndex = ({ data, location }) => {
       </Layout>
     )
   }
+
+  useEffect(()=>{
+    if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+  },[])
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -59,6 +71,7 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </ol>
+    
     </Layout>
   )
 }
